@@ -13,10 +13,12 @@ namespace UnitTestGUIStuff
     {
       MyFormThatIWantToTest asdf = new MyFormThatIWantToTest();
       Assert.AreEqual(false, asdf.DidValidate);
+
       asdf.tbxValidatesOnFocusLeave.Focus();
       asdf.tbxValidatesOnFocusLeave.Text = "5";
+
+      // Force GUI to invoke leave()
       asdf.tbxValidatesOnFocusLeave.InvokeGenericDelegateForControlEventName("Leave");
-      asdf.ActiveControl = asdf.tbxTheSecond;
       Assert.AreEqual(true, asdf.DidValidate);
     }
   }
